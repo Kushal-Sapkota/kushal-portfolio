@@ -91,32 +91,36 @@
             
             
             const contactForm = document.getElementById('contactForm');
-                if (contactForm) {
-                    contactForm.addEventListener('submit', async function(e) {
-                        e.preventDefault();
 
-                const formData = new FormData(this);
+if (contactForm) {
+    contactForm.addEventListener('submit', async function (e) {
+        e.preventDefault();  // Prevents the form from being submitted the default way
 
-                        try {
-                            const response = await fetch('https://formspree.io/f/mqadejpj', {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                     'Accept': 'application/json'
-                        }
-                    });
+        const formData = new FormData(this);  // Creates a FormData object with form data
+
+        try {
+            const response = await fetch(this.action, {  // Sends data to Formspree (via the form's action URL)
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json',
+                },
+            });
 
             if (response.ok) {
                 alert('Thank you for your message! I will get back to you soon.');
-                this.reset();
+                this.reset();  // Reset the form if the submission is successful
             } else {
-                alert('Oops! Something went wrong. Please try again.');
+                alert('There was an issue with the submission. Please try again.');
+                console.error('Form submission failed:', response);
             }
-                } catch (error) {
-                    alert('Error submitting form. Check your internet connection or try later.');
-                                }
-            });
-        }     
+        } catch (err) {
+            alert('Error submitting the form. Please try again later.');
+            console.error('Error:', err);
+        }
+    });
+}
+    
             
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
