@@ -1,10 +1,195 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Kushal Sapkota</title>
-  </head>
-  <body>
-    <h1>Hello, I’m Kushal Sapkota</h1>
-    <p>My portfolio will be here soon. Stay tuned!</p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kushal Sapkota | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Kushal Sapkota</a>
+            <div class="menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>Hi, I'm <span>Kushal Sapkota</span><br>BIT Student & Developer</h1>
+                <p>Passionate about coding, digital experiences, and solving real-world problems with technology.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+            <div class="magnifier-container">
+                <div class="blurred-image">
+                    <img src="profile.jpg" alt="Kushal Sapkota">
+                </div>
+                <div class="glass" id="glass"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <h2 class="section-title">About <span>Me</span></h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Passionate Developer & Intern</h2>
+                    <p>I'm a Bachelor of Information Technology student at Tribhuvan University with a focus on software development, web technologies, and practical IT solutions.</p>
+                    <p>I have experience as an IT support intern and enjoy working on projects like gesture-controlled image systems, portfolio websites, and e-commerce applications.</p>
+                    <p>When I'm not coding, I explore new technologies, work on personal projects, or create digital content inspired by everyday life in Nepal.</p>
+                    <a href="#contact" class="btn">Get In Touch</a>
+                </div>
+                <div class="magnifier-container">
+                    <div class="blurred-image">
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" alt="About Me">
+                    </div>
+                    <div class="glass" id="glass2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section skills">
+        <div class="container">
+            <h2 class="section-title">My <span>Skills</span></h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <i class="fas fa-code"></i>
+                    <h3>Java & Web Tech</h3>
+                    <p>Proficient in Java programming, JDBC, and web technologies like HTML, CSS, and JavaScript.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Python & Projects</h3>
+                    <p>Hands-on experience in Python projects including gesture-controlled image systems.</p>
+                </div>
+                <div class="skill-card">
+                    <i class="fas fa-database"></i>
+                    <h3>Database & IT Support</h3>
+                    <p>Experience with Oracle, MySQL, and IT support in a professional ISP environment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 class="section-title">My <span>Projects</span></h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1674&q=80" alt="Project 1">
+                    </div>
+                    <div class="project-info">
+                        <h3>Gesture Image System</h3>
+                        <p>A Python-based system to control images with hand gestures, including zoom, pop, and delete actions.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1752&q=80" alt="Project 2">
+                    </div>
+                    <div class="project-info">
+                        <h3>Portfolio Website</h3>
+                        <p>Designed and developed a personal portfolio website to showcase skills, projects, and contact information.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1655&q=80" alt="Project 3">
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Demo</h3>
+                        <p>Created an e-commerce application prototype as part of academic and practical assignments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <h2 class="section-title">Contact <span>Me</span></h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Available for internships, collaborations, and interesting projects. Reach out to discuss opportunities.</p>
+                    <div class="contact-details">
+                        <p><i class="fas fa-envelope"></i> kushalsapkota81@gmail.com</p>
+                        <p><i class="fas fa-phone"></i> +977-9813033783</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/Kushal-Sapkota" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/kushal-sapkota-30547427b/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                        <input type="text" placeholder="Subject" required>
+                        <textarea placeholder="Your Message" required></textarea>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">Kushal Sapkota</div>
+                    <p>Creating efficient digital solutions and projects with a focus on practical IT and innovative development.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Java & Web Dev</a></li>
+                        <li><a href="#">Python Projects</a></li>
+                        <li><a href="#">Database Management</a></li>
+                        <li><a href="#">IT Support</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Kushal Sapkota. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
