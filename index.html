@@ -1,196 +1,492 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kushal Sapkota | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kushal Sapkota — IT Support & DevOps</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0d1117;
+      --bg2: #161b22;
+      --bg3: #21262d;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --accent2: #3fb950;
+      --accent3: #d2a8ff;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,17,23,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 56px;
+    }
+    .nav-logo {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--accent2);
+      letter-spacing: 0.5px;
+    }
+    .nav-links { display: flex; gap: 1.5rem; }
+    .nav-links a {
+      font-size: 13px;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); text-decoration: none; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 5rem 2rem 3rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .hero-inner { width: 100%; }
+    .hero-prompt {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--accent2);
+      margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hero-prompt::before {
+      content: '$';
+      color: var(--muted);
+    }
+    .cursor {
+      display: inline-block;
+      width: 2px; height: 1.1em;
+      background: var(--accent);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.3rem);
+      color: var(--muted);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .hero-sub span { color: var(--accent3); font-weight: 400; }
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #0d1117;
+      border: none;
+    }
+    .btn-primary:hover { background: #79c0ff; text-decoration: none; }
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+    /* SECTIONS */
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .section-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent2);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      transition: border-color 0.2s;
+    }
+    .skill-card:hover { border-color: var(--accent); }
+    .skill-card-label {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .skill-card-name {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+    .skill-tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-top: 6px;
+      background: var(--bg3);
+      color: var(--muted);
+    }
+    .tag-active { background: rgba(63,185,80,0.15); color: var(--accent2); }
+    .tag-learning { background: rgba(88,166,255,0.15); color: var(--accent); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.2rem;
+    }
+    .project-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.4rem;
+      display: flex; flex-direction: column;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .project-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0.8rem;
+    }
+    .project-icon { font-size: 1.4rem; }
+    .project-links { display: flex; gap: 8px; }
+    .project-links a {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      border-radius: 4px;
+      transition: all 0.15s;
+    }
+    .project-links a:hover { color: var(--accent); border-color: var(--accent); text-decoration: none; }
+    .project-name {
+      font-size: 15px;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+    }
+    .project-desc {
+      font-size: 13px;
+      color: var(--muted);
+      flex: 1;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .project-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg3);
+      color: var(--muted);
+    }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+    .exp-item {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+    .exp-date {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+    .exp-title { font-size: 15px; font-weight: 600; margin-bottom: 2px; }
+    .exp-org { font-size: 13px; color: var(--accent); margin-bottom: 6px; }
+    .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* CONTACT */
+    .contact-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+    }
+    .contact-link {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .contact-icon { font-size: 16px; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-family: var(--mono);
+    }
+
+    @media (max-width: 600px) {
+      .exp-item { grid-template-columns: 1fr; gap: 0.3rem; }
+      .nav-links { display: none; }
+    }
+  </style>
 </head>
 <body>
-    
-    <header id="header">
-        <div class="container nav-container">
-            <a href="#" class="logo">Kushal Sapkota</a>
-            <div class="menu-btn">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+<nav>
+  <div class="nav-logo">kushal@sapkota:~$</div>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-prompt">whoami<span class="cursor"></span></div>
+    <h1>Kushal Sapkota</h1>
+    <p class="hero-sub">IT Support & <span>DevOps Engineer</span> — Kathmandu, Nepal</p>
+    <p class="hero-desc">
+      BIT Graduate from Tribhuvan University. I build reliable systems, automate repetitive work, and keep infrastructure running. Currently deepening expertise in Linux, CI/CD pipelines, and cloud infrastructure.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">View Projects</a>
+      <a href="https://github.com/Kushal-Sapkota" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://www.linkedin.com/in/kushal-sapkota-30547427b/" target="_blank" class="btn btn-outline">LinkedIn</a>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// capabilities</div>
+  <h2>Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-label">OS</div>
+      <div class="skill-card-name">Linux (Ubuntu)</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Scripting</div>
+      <div class="skill-card-name">Shell Scripting / Bash</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Automation</div>
+      <div class="skill-card-name">Ansible</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">CI/CD</div>
+      <div class="skill-card-name">Jenkins & Pipelines</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Version Control</div>
+      <div class="skill-card-name">Git & GitHub</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Networking</div>
+      <div class="skill-card-name">IP Addressing & Subnetting</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Language</div>
+      <div class="skill-card-name">Python</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Containers</div>
+      <div class="skill-card-name">Docker</div>
+      <span class="skill-tag tag-learning">Learning</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Cloud</div>
+      <div class="skill-card-name">AWS Fundamentals</div>
+      <span class="skill-tag tag-learning">Learning</span>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-label">Support</div>
+      <div class="skill-card-name">IT Support & Troubleshooting</div>
+      <span class="skill-tag tag-active">Active</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// builds</div>
+  <h2>Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">🖐️</div>
+        <div class="project-links">
+          <a href="https://github.com/Kushal-Sapkota/Gesture_App" target="_blank">GitHub</a>
         </div>
-    </header>
+      </div>
+      <div class="project-name">Gesture App</div>
+      <div class="project-desc">Real-time image editor controlled entirely by hand gestures. Rotate, zoom, and adjust brightness — no mouse, no keyboard. Built with MediaPipe and OpenCV.</div>
+      <div class="project-tags">
+        <span class="project-tag">Python</span>
+        <span class="project-tag">OpenCV</span>
+        <span class="project-tag">MediaPipe</span>
+        <span class="project-tag">Computer Vision</span>
+      </div>
+    </div>
 
-    
-    <section id="home" class="hero">
-        <div class="container hero-content">
-            <div class="hero-text">
-                <h1>Hi, I'm <span>Kushal Sapkota</span><br>BIT Student & Developer</h1>
-                <p>Passionate about coding, digital experiences, and solving real-world problems with technology.</p>
-                <a href="#projects" class="btn">View My Work</a>
-            </div>
-            <div class="magnifier-container">
-                <div class="blurred-image">
-                    <img src="./profile.jpg" alt="Kushal Sapkota">
-                </div>
-                <div class="glass" id="glass"></div>
-            </div>
+    <div class="project-card">
+      <div class="project-top">
+        <div class="project-icon">⚙️</div>
+        <div class="project-links">
+          <a href="https://github.com/Kushal-Sapkota" target="_blank">GitHub</a>
         </div>
-    </section>
+      </div>
+      <div class="project-name">DevOps Practice</div>
+      <div class="project-desc">Shell scripts, Ansible playbooks, and Jenkins pipeline configurations built during structured DevOps learning. Covers Linux automation, IaC, and CI/CD.</div>
+      <div class="project-tags">
+        <span class="project-tag">Shell</span>
+        <span class="project-tag">Ansible</span>
+        <span class="project-tag">Jenkins</span>
+        <span class="project-tag">Linux</span>
+      </div>
+    </div>
 
-    
-    <section id="about" class="section about">
-        <div class="container">
-            <h2 class="section-title">About <span>Me</span></h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Passionate Developer & Intern</h2>
-                    <p>I'm a Bachelor of Information Technology student at Tribhuvan University with a focus on software development, web technologies, and practical IT solutions.</p>
-                    <p>I have experience as an IT support intern and enjoy working on projects like gesture-controlled image systems, portfolio websites, and e-commerce applications.</p>
-                    <p>When I'm not coding, I explore new technologies, work on personal projects, or create digital content inspired by everyday life in Nepal.</p>
-                    <a href="#contact" class="btn">Get In Touch</a>
-                </div>
-                <div class="magnifier-container">
-                    <div class="blurred-image">
-                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" alt="About Me">
-                    </div>
-                    <div class="glass" id="glass2"></div>
-                </div>
-            </div>
-        </div>
-    </section>
+  </div>
+</section>
 
-    
-    <section id="skills" class="section skills">
-        <div class="container">
-            <h2 class="section-title">My <span>Skills</span></h2>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <i class="fas fa-code"></i>
-                    <h3>Java & Web Tech</h3>
-                    <p>Proficient in Java programming, JDBC, and web technologies like HTML, CSS, and JavaScript.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-mobile-alt"></i>
-                    <h3>Python & Projects</h3>
-                    <p>Hands-on experience in Python projects including gesture-controlled image systems.</p>
-                </div>
-                <div class="skill-card">
-                    <i class="fas fa-database"></i>
-                    <h3>Database & IT Support</h3>
-                    <p>Experience with Oracle, MySQL, and IT support in a professional ISP environment.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// history</div>
+  <h2>Experience</h2>
+  <div class="exp-list">
 
-    
-    <section id="projects" class="section">
-        <div class="container">
-            <h2 class="section-title">My <span>Projects</span></h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&w=1674&q=80" alt="Project 1">
-                    </div>
-                    <div class="project-info">
-                        <h3>Gesture Image System</h3>
-                        <p>A Python-based system to control images with hand gestures, including zoom, pop, and delete actions.</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1752&q=80" alt="Project 2">
-                    </div>
-                    <div class="project-info">
-                        <h3>Portfolio Website</h3>
-                        <p>Designed and developed a personal portfolio website to showcase skills, projects, and contact information.</p>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=1655&q=80" alt="Project 3">
-                    </div>
-                    <div class="project-info">
-                        <h3>E-Commerce Demo</h3>
-                        <p>Created an e-commerce application prototype as part of academic and practical assignments.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="exp-item">
+      <div class="exp-date">May 2025<br>July</div>
+      <div>
+        <div class="exp-title">Enumerator</div>
+        <div class="exp-org">Central Bureau of Statistics — National Economic Census</div>
+        <div class="exp-desc">Conducting field data collection for Nepal's national economic census. Responsible for household and business surveys, accurate data recording, and area-based reporting.</div>
+      </div>
+    </div>
 
-    
-    <section id="contact" class="section contact">
-        <div class="container">
-            <h2 class="section-title">Contact <span>Me</span></h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>Available for internships, collaborations, and interesting projects. Reach out to discuss opportunities.</p>
-                    <div class="contact-details">
-                        <p><i class="fas fa-envelope"></i> kushalsapkota81@gmail.com</p>
-                        <p><i class="fas fa-phone"></i> +977-9813033783</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Kathmandu, Nepal</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/Kushal-Sapkota" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/kushal-sapkota-30547427b/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form id="contactForm" action="https://formspree.io/f/mqadejpj" method="POST">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <input type="text" name="subject" placeholder="Subject" required>
-                        <textarea name="message" placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-            </div>
+    <div class="exp-item">
+      <div class="exp-date">Jun 2025<br>Aug 2025</div>
+      <div>
+        <div class="exp-title">IT Support Intern</div>
+        <div class="exp-org">DishHome — Nepal's leading ISP</div>
+        <div class="exp-desc">Provided technical support to residential and corporate clients. Diagnosed and resolved network connectivity issues, maintained IT infrastructure, and supported day-to-day operations.</div>
+      </div>
+    </div>
 
-            </div>
-        </div>
-    </section>
+    <div class="exp-item">
+      <div class="exp-date">2022<br>2026</div>
+      <div>
+        <div class="exp-title">Bachelor of Information Technology (BIT)</div>
+        <div class="exp-org">Tribhuvan University — Patan Multiple Campus</div>
+        <div class="exp-desc">CGPA: 3.37 / 4.0 — Graduated 2025. Focus on networking, systems, and software development.</div>
+      </div>
+    </div>
 
-    
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-about">
-                    <div class="footer-logo">Kushal Sapkota</div>
-                    <p>Creating efficient digital solutions and projects with a focus on practical IT and innovative development.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#">Java & Web Dev</a></li>
-                        <li><a href="#">Python Projects</a></li>
-                        <li><a href="#">Database Management</a></li>
-                        <li><a href="#">IT Support</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2025 Kushal Sapkota. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+  </div>
+</section>
 
-    <script src="script.js"></script>
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">// reach out</div>
+  <h2>Open to Work</h2>
+  <p style="color:var(--muted);margin-bottom:1.5rem;max-width:500px;">
+    Actively looking for IT Support and Junior DevOps roles in Kathmandu Valley. Available on-site or hybrid.
+  </p>
+  <div class="contact-links">
+    <a href="https://github.com/Kushal-Sapkota" target="_blank" class="contact-link">
+      <span class="contact-icon">⌥</span> GitHub
+    </a>
+    <a href="https://www.linkedin.com/in/kushal-sapkota-30547427b/" target="_blank" class="contact-link">
+      <span class="contact-icon">in</span> LinkedIn
+    </a>
+    <a href="mailto:kushalsapkota81@gmail.com" class="contact-link">
+      <span class="contact-icon">✉</span> Email
+    </a>
+  </div>
+</section>
+
+<footer>
+  Built by KUSHAL  SAPKOTA · KATHMANDU, NEPAL · 2026
+</footer>
+
 </body>
 </html>
